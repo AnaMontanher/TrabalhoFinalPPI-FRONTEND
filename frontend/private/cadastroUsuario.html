@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../public/styles/style.css" />
+    <script src="../public/iconEffect.js" defer></script>
+    <title>Cadastrar Usuario</title>
+  </head>
+  <body>
+    <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid d-flex justify-content-between">
+        <div class="divTopo">
+          <a
+            class="navbar-brand d-flex align-items-center"
+            href="../public/index.html"
+            ><img
+              src="../public/assets/reading.png"
+              style="width: 45px"
+              alt="brand do site Livrare"
+            />
+            <span class="brand ms-2">LIVRARE</span></a
+          >
+        </div>
+        <div class="collapse navbar-collapse justify-content-end">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item me-2">
+              <a class="nav-link" href="">Solicitar</a>
+            </li>
+            <li class="nav-item me-2">
+              <a class="nav-link" href="">Perfil</a>
+            </li>
+            <li class="nav-item me-2 d-flex">
+              <a id="loginLink" class="nav-link" href="./login.html"
+                ><img
+                  id="iconLogout"
+                  src="../public/assets/logout.png"
+                  width="20px"
+                  alt="sair icon"
+                /><span class="ms-2">Sair</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="form mb-3">
+        <h2 class="pb-3">CADASTRO DE USUÁRIO</h2>
+        <form id="formUsuario" class="row g-3 needs-validation" novalidate>
+          <div class="form-input mb-3 col-md-6">
+            <label for="nomeUsuario" class="form-label">Nome Completo:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nomeUsuario"
+              pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
+              placeholder="Digite seu nome completo."
+              aria-label="nome completo"
+              required
+            />
+            <div class="invalid-feedback">Campo obrigatório.</div>
+          </div>
+          <div class="form-input mb-3 col-md-3">
+            <label for="sigla" class="form-label">CPF:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cpf"
+              placeholder="000.000.000-00"
+              pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$"
+              aria-label="cpf"
+              maxlength="14"
+              required
+            />
+            <div class="invalid-feedback">Campo obrigatório.</div>
+          </div>
+          <div class="form-input mb-3 col-md-3">
+            <label for="sigla" class="form-label">Telefone:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fone"
+              placeholder="(XX)XXXXX-XXXX"
+              pattern="^\([1-9]{2}\)\s[0-9]{5}-[0-9]{4}$"
+              maxlength="15"
+              required
+            />
+            <div class="invalid-feedback">Campo obrigatório.</div>
+          </div>
+
+          <div class="form-input mb-3 col-md-3">
+            <label for="formDate" class="form-label">Data de nascimento:</label>
+            <input
+              id="dataNasc"
+              type="date"
+              class="form-control"
+              maxlength="15"
+              max="2025-06-03"
+              aria-label="Data de Nascimento"
+              required
+            />
+            <div class="invalid-feedback">Digite uma data válida.</div>
+          </div>
+          <div class="form-input mb-3 col-md-3">
+            <label for="formSexo" class="form-label">Sexo:</label>
+            <select
+              id="formSexo"
+              class="form-select"
+              aria-label="Sexo"
+              required
+            >
+              <option selected disabled value="">Selecione uma opção:</option>
+              <option value="F">Feminino</option>
+              <option value="M">Masculino</option>
+              <option value="N">Prefiro não dizer</option>
+            </select>
+            <div class="invalid-feedback">Campo obrigatório.</div>
+          </div>
+          <div class="form-input mb-3 col-md-6">
+            <label for="formEmail" class="form-label">Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="nome@example.com"
+              required
+            />
+            <div class="invalid-feedback">O email deve possuir @domínio.</div>
+          </div>
+          <div class="form-input mb-3 col-md-6">
+            <label for="formPassw" class="form-label">Senha:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="formPassw"
+              placeholder="Digite sua senha."
+              required
+            />
+            <div class="invalid-feedback">Campo obrigatório</div>
+          </div>
+          <div class="form-input mb-3 col-md-6">
+            <label for="confPassw" class="form-label"
+              >Confirme a sua senha:</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="confPassw"
+              placeholder="Digite a mesma senha."
+              required
+            />
+            <div class="invalid-feedback">As senhas não são iguais</div>
+          </div>
+          <div class="g-3 form-check mb-3">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="agree"
+              id="termos"
+              required
+            />
+            <label class="form-check-label" for="invalidCheck">
+              Eu aceito os <a href="#">Termos e Condições.</a>
+            </label>
+            <div class="invalid-feedback">
+              Você precisa concordar com os termos e condições para continuar.
+            </div>
+          </div>
+          <div class="col-12">
+            <button id="btnCadastrar" class="btn btn-primary" type="submit">
+              Cadastrar
+            </button>
+            <button id="btnAtualizar" class="btn btn-secondary" type="button">
+              Atualizar
+            </button>
+            <button id="btnReset" class="btn btn-secondary" type="button">
+              Reset
+            </button>
+          </div>
+        </form>
+        <div
+          class="alert alert-success text-center mt-3 visually-hidden"
+          id="alert"
+          role="alert"
+        >
+          Cadastro realizado com sucesso!
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/usuario.js" defer></script>
+    <script src="./js/validacaoUsuario.js" defer></script>
+  </body>
+</html>

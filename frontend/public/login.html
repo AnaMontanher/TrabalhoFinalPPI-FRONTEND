@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Página Login</title>
+  </head>
+  <body>
+    <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid d-flex justify-content-between">
+        <div class="divTopo">
+          <a
+            class="navbar-brand d-flex align-items-center"
+            href="./public/index.html"
+            ><img
+              src="./assets/reading.png"
+              style="width: 45px"
+              alt="brand do site Livrare"
+            />
+            <span class="brand ms-2">LIVRARE</span></a
+          >
+        </div>
+      </div>
+    </nav>
+    <div id="container">
+      <div id="main-login" class="form-signin m-auto w-100">
+        <img
+          class="mb-2"
+          style="width: 100%"
+          src="./assets/study bg.png"
+          alt=""
+        />
+        <h2 class="title mb-4">
+          Faça login para ter acesso aos nossos conteúdos
+        </h2>
+
+        <form
+          method="post"
+          action="/login"
+          id="form"
+          class="needs-validation"
+          novalidate
+        >
+          <label class="mb-2" for="form-control">E-mail:</label>
+          <input
+            class="form-control mb-2 login"
+            placeholder="nome@example.com"
+            type="email"
+            id="usuario"
+            name="usuario"
+            required
+          />
+          <div class="invalid-feedback">Campo obrigatório</div>
+
+          <label class="mb-2" for="form-control">Senha:</label>
+          <input
+            class="form-control mb-2 login"
+            placeholder="Digite sua senha."
+            type="password"
+            name="senha"
+            id="senha"
+            required
+          />
+          <div class="invalid-feedback">Campo obrigatório</div>
+
+          <input
+            class="btn btn-primary w-100 mt-3 py-2"
+            id="submit"
+            type="submit"
+            value="Entrar"
+          />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+.divider {
+  width: 100%;
+  height: calc((100vh - 30.65rem) / 2);
+  background-color: #0000001a;
+  border: solid rgba(0, 0, 0, 0.15);
+  border-width: 1px 0;
+  box-shadow: inset 0 0.5em 1.5em #0000001a, inset 0 0.125em 0.5em #00000026;
+}
+#navbar {
+  background-color: #444cba !important;
+  --bs-navbar-color: #d7f6f7 !important;
+  --bs-navbar-disabled-color: var(--bs-navbar-color);
+  --bs-navbar-brand-color: var(--bs-navbar-color);
+  --bs-navbar-active-color: var(--bs-navbar-color);
+  --bs-emphasis-color: #d7f6f7;
+  font-family: "Quintessential", serif;
+  font-weight: 900;
+  max-width: 100%;
+}
+.form-signin {
+  max-width: 500px;
+  padding: 1rem;
+}
+
+.navbar-nav {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 400;
+}
+.nav-link:hover {
+  color: #f2cc8f !important;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  max-width: 100%;
+  padding: 3rem 2.5rem;
+}
+#formUsuario {
+  max-width: 900px;
+  background-color: #cfcfcf;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 2px 3px 4px 2px black;
+}
+#formPedido {
+  background-color: #cfcfcf;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 1px 1px 3px black;
+}
