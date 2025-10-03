@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const email = document.getElementById("email");
   const senha = document.getElementById("senha");
   const confSenha = document.getElementById("confSenha");
-  // const btnAtualizar = document.getElementById("btnAtualizar");
-  // btnAtualizar.setAttribute("disabled", "disabled");
 
   //mascara nome
   nome.addEventListener("input", function (e) {

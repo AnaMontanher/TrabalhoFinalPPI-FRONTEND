@@ -80,21 +80,41 @@
     <div id="container" class="container d-block">
       <div id="divMenu" class="form mt-1">
         <form id="formPedido" class="row g-3 needs-validation" novalidate>
-          <div class="form-input mb-2 col-md-4">
+          <div class="form-input mb-2 col-md-6">
             <label for="sigla" class="form-label">CPF do Cliente:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="cpf"
-              placeholder="000.000.000-00"
-              pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$"
-              aria-label="cpf"
-              maxlength="14"
-              required
-            />
+            <div class="d-flex">
+              <input
+                type="text"
+                class="form-control"
+                id="cpf"
+                placeholder="000.000.000-00"
+                pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$"
+                aria-label="cpf"
+                maxlength="14"
+                required
+              /><button
+                id="btnBuscar"
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="exibirTabelaPedidos()"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                  />
+                </svg>
+              </button>
+            </div>
             <div class="invalid-feedback">Campo obrigatório</div>
           </div>
-          <div class="form-input mb-2 col-md-8">
+          <div class="form-input mb-2 col-md-6">
             <label for="nomeUsuario" class="form-label">Nome Completo:</label>
             <input
               type="text"
@@ -144,10 +164,16 @@
             *É necessário preencher todos os campos obrigatórios
           </div>
           <div class="col-12">
-            <button id="btnBuscar" class="btn btn-primary" type="submit">
+            <button id="btnCadastrar" class="btn btn-primary" type="submit">
               Cadastrar
             </button>
-            <button id="btnAtualizar" class="btn btn-secondary" type="button">
+
+            <button
+              id="btnAtualizar"
+              class="btn btn-secondary"
+              type="button"
+              disabled="disabled"
+            >
               Atualizar
             </button>
             <button id="btnReset" class="btn btn-secondary" type="button">

@@ -12,6 +12,20 @@ document.getElementById("btnAtualizar").onclick = () => {
 document.getElementById("btnReset").onclick = resetFormulario;
 formulario.onsubmit = gravarUsuario;
 
+function botoesEstado(padrao) {
+  if (padrao) {
+    document
+      .getElementById("btnAtualizar")
+      .setAttribute("disabled", "disabled");
+    document.getElementById("btnCadastrar").removeAttribute("disabled");
+  } else {
+    document.getElementById("btnAtualizar").removeAttribute("disabled");
+    document
+      .getElementById("btnCadastrar")
+      .setAttribute("disabled", "disabled");
+  }
+}
+
 function formularioInputs() {
   return {
     cpf: document.getElementById("cpf").value,
@@ -137,7 +151,7 @@ function prepararFormulario(cpf) {
 
         // Preenchendo o formulário com os dados da tabela
         recuperaDadosCliente(cliente);
-
+        botoesEstado(false);
         // Após preenchimento, envia alteração direto
         if (confirm(`Deseja atualizar o cliente (CPF: ${cliente.cpf})?`)) {
         } else {
@@ -203,6 +217,8 @@ function resetFormulario() {
   document.getElementById("confSenha").value = "";
   formulario.classList.remove("was-validated");
   document.getElementById("invalidForm").style.display = "none";
+  document.getElementById("btnAtualizar").setAttribute("disabled", "disabled");
+  document.getElementById("btnCadastrar").removeAttribute("disabled");
 }
 
 function mensagemAlerta(mensagem, tipo) {

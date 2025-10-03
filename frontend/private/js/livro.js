@@ -11,6 +11,19 @@ document.getElementById("btnAtualizar").onclick = () => {
 };
 document.getElementById("btnReset").onclick = resetFormulario;
 
+function botoesEstado(padrao) {
+  if (padrao) {
+    document
+      .getElementById("btnAtualizar")
+      .setAttribute("disabled", "disabled");
+    document.getElementById("btnCadastrar").removeAttribute("disabled");
+  } else {
+    document.getElementById("btnAtualizar").removeAttribute("disabled");
+    document
+      .getElementById("btnCadastrar")
+      .setAttribute("disabled", "disabled");
+  }
+}
 formulario.onsubmit = gravarPedido;
 
 const cpfInput = document.getElementById("cpf");
@@ -26,6 +39,8 @@ cpfInput.addEventListener("input", function (e) {
           // Preenchendo o formulário com os dados da tabela
           document.getElementById("nomeUsuario").value = cliente.nome;
         } else {
+          botoesEstado(false);
+
           mensagemAlerta(
             "Cliente não possui cadastro no sistema" + erro.message,
             "danger"
@@ -47,30 +62,6 @@ function formularioInputs() {
     cliente: document.getElementById("cpf").value,
   };
 }
-
-// //etapa buscando se o mesmo livro já foi cadastrado por outro cliente:
-//  function verificarDuplicidade(livroVerificar) {
-//   await fetch("http://localhost:4000/livro/", { method: "GET" })
-//     .then((resposta) => {
-//       if (resposta.ok) {
-//         return resposta.json();
-//       } //retorna dados
-//     })
-//     .then((dados) => {
-//       if (dados.status) {
-//         const duplicado = dados.livros.some(
-//           (livro) =>
-//             livro.titulo.toLowerCase() === tituloVerificar.toLowerCase()
-//         );
-//         return duplicado;
-//       } else {
-//         return false;
-//       }
-//     })
-//     .catch((erro) => {
-//       alert("Não foi possível recuperar  do backend." + erro.message);
-//     });
-// }
 
 function gravarPedido(evento) {
   const cpf = document.getElementById("cpf").value;
@@ -187,7 +178,7 @@ function mensagemAlerta(mensagem, tipo) {
 //FORMULÁRIO RECUPERA OS DADOS DO livro do USUARIO ESPECÍFICO
 function prepararFormulario(id) {
   // Busca dados do Cliente
-  fetch("http://localhost:4000/livro/" + id, { method: "GET" })
+  fetch("http://localhost:4000/livro/id/" + id, { method: "GET" })
     .then((resposta) => resposta.json())
     .then((dados) => {
       if (dados.status || dados.resposta) {
@@ -204,6 +195,7 @@ function prepararFormulario(id) {
             `Deseja atualizar o pedido do cliente  CPF: ${livro.cliente.cpf}?`
           )
         ) {
+          botoesEstado(false);
         } else {
           resetFormulario;
         }
@@ -232,13 +224,20 @@ function resetFormulario() {
   document.getElementById("tituloLivro").value = "";
   document.getElementById("autorLivro").value = "";
   document.getElementById("invalidForm").style.display = "none";
+  botoesEstado(true);
 }
 
 function exibirTabelaPedidos() {
   const espacoTabela = document.getElementById("tabela");
   espacoTabela.innerHTML = "";
+  const cpf = document.getElementById("cpf").value;
 
-  fetch("http://localhost:4000/livro", { method: "GET" })
+  if (cpf.length === 14) {
+    var rota = `http://localhost:4000/livro/cpf/${cpf}`;
+  } else {
+    var rota = "http://localhost:4000/livro";
+  }
+  fetch(rota, { method: "GET" })
     .then((resposta) => {
       if (resposta.ok) {
         return resposta.json();
