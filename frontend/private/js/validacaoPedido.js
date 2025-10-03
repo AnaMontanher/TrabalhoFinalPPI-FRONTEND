@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("formPedido");
-  const nome = document.getElementById("nomeUsuario");
   const cpf = document.getElementById("cpf");
-  const titulo = document.getElementById("tituloLivro");
-  const autor = document.getElementById("autorLivro");
 
   //máscara campo CPF
   cpf.addEventListener("input", function (e) {
@@ -17,24 +14,5 @@ document.addEventListener("DOMContentLoaded", function () {
     e.target.value = cpfPattern;
   });
 
-  function validarFormulario() {
-    const formValidado = form.checkValidity();
-    if (formValidado) {
-      form.classList.remove("was-validated");
-    } else {
-      form.classList.add("was-validated");
-    }
-    return formValidado;
-  }
 
-  form.onsubmit = gravarUsuario;
-
-  function gravarUsuario(evento) {
-    if (validarFormulario()) {
-      console.log("olá");
-    }
-
-    evento.stopPropagation();
-    evento.preventDefault();
-  }
 });

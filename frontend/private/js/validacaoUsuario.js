@@ -4,8 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const cpf = document.getElementById("cpf");
   const tel = document.getElementById("fone");
   const email = document.getElementById("email");
-  const senha = document.getElementById("formPassw");
-  const confSenha = document.getElementById("confPassw");
+  const senha = document.getElementById("senha");
+  const confSenha = document.getElementById("confSenha");
+  // const btnAtualizar = document.getElementById("btnAtualizar");
+  // btnAtualizar.setAttribute("disabled", "disabled");
 
   //mascara nome
   nome.addEventListener("input", function (e) {

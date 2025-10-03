@@ -12,6 +12,14 @@
   border-width: 1px 0;
   box-shadow: inset 0 0.5em 1.5em #0000001a, inset 0 0.125em 0.5em #00000026;
 }
+.navbar-toggler-icon {
+  background-image: url("../assets/menu.png") !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+}
 #navbar {
   background-color: #444cba !important;
   --bs-navbar-color: #d7f6f7 !important;
@@ -19,6 +27,7 @@
   --bs-navbar-brand-color: var(--bs-navbar-color);
   --bs-navbar-active-color: var(--bs-navbar-color);
   --bs-emphasis-color: #d7f6f7;
+  --bs-navbar-toggler-border-color: #d7f6f796;
   font-family: "Quintessential", serif;
   font-weight: 900;
   max-width: 100%;
@@ -58,4 +67,12 @@
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 1px 1px 3px black;
+}
+
+#invalidForm {
+  font-weight: 700;
+}
+
+#btnNov {
+  list-style: none;
 }

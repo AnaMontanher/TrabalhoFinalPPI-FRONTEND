@@ -16,11 +16,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/style.css" />
-    <title>Página Login</title>
+    <title>Login inválido</title>
   </head>
   <body>
     <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluids">
+      <div class="container-fluid">
         <div class="divTopo d-flex w-100 justify-content-between">
           <a class="navbar-brand d-flex align-items-center" href="./index.html"
             ><img
@@ -41,46 +41,11 @@
           src="./assets/study bg.png"
           alt=""
         />
-        <h2 class="title mb-4">
-          Faça login para ter acesso aos nossos conteúdos
-        </h2>
+        <h2 class="title mb-4">Login Inválido! <br /></h2>
 
-        <form
-          method="POST"
-          action="http://localhost:3000/login"
-          id="form"
-          class="needs-validation"
-          novalidate
-        >
-          <label class="mb-2" for="form-control">E-mail:</label>
-          <input
-            class="form-control mb-2 login"
-            placeholder="nome@example.com"
-            type="email"
-            id="usuario"
-            name="usuario"
-            required
-          />
-          <div class="invalid-feedback">Campo obrigatório</div>
-
-          <label class="mb-2" for="form-control">Senha:</label>
-          <input
-            class="form-control mb-2 login"
-            placeholder="Digite sua senha."
-            type="password"
-            name="senha"
-            id="senha"
-            required
-          />
-          <div class="invalid-feedback">Campo obrigatório</div>
-
-          <input
-            class="btn btn-primary w-100 mt-3 py-2"
-            id="submit"
-            type="submit"
-            value="Entrar"
-          />
-        </form>
+        <a href="./login.html" id="btnNov" class="btn btn-primary w-100">
+          Tente novamente.
+        </a>
       </div>
     </div>
   </body>
