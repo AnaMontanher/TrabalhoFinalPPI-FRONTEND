@@ -17,6 +17,7 @@ function botoesEstado(padrao) {
       .getElementById("btnAtualizar")
       .setAttribute("disabled", "disabled");
     document.getElementById("btnCadastrar").removeAttribute("disabled");
+    document.getElementById("btnBuscar").removeAttribute("disabled");
   } else {
     document.getElementById("btnAtualizar").removeAttribute("disabled");
     document
@@ -39,6 +40,7 @@ cpfInput.addEventListener("input", function (e) {
           const cliente = dados.cliente;
           // Preenchendo o formulário com os dados da tabela
           document.getElementById("nomeUsuario").value = cliente.nome;
+          botoesEstado(true);
         } else {
           botoesEstado(false);
           mensagemAlerta(
@@ -276,6 +278,6 @@ function exibirTabelaPedidos() {
       }
     })
     .catch((erro) => {
-      alert("Não foi possível recuperar os dados do backend." + erro.message);
+      mensagemAlerta("O cliente não possui livros cadastrados.", "danger");
     });
 }

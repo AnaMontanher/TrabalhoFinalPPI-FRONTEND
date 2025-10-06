@@ -9,7 +9,7 @@ document.getElementById("btnAtualizar").onclick = () => {
   const cpf = document.getElementById("cpf").value;
   atualizarCliente(cpf);
 };
-document.getElementById("btnReset").onclick = resetFormulario;
+document.getElementById("btnReset").onclick = resetFormulario();
 formulario.onsubmit = gravarUsuario;
 
 function botoesEstado(padrao) {
@@ -57,7 +57,7 @@ function gravarUsuario(evento) {
       })
       .then((dados) => {
         if (dados.status) {
-          resetFormulario;
+          resetFormulario();
           exibirTabelaClientes();
           mensagemAlerta("Cliente gravado com sucesso!", "success");
         } else {
@@ -114,7 +114,7 @@ function atualizarCliente(cpf) {
     })
     .then((dados) => {
       if (dados.status) {
-        resetFormulario;
+        resetFormulario();
         exibirTabelaClientes();
         mensagemAlerta("Cliente atualizado com sucesso!", "success");
       } else {
@@ -155,7 +155,7 @@ function prepararFormulario(cpf) {
         // Após preenchimento, envia alteração direto
         if (confirm(`Deseja atualizar o cliente (CPF: ${cliente.cpf})?`)) {
         } else {
-          resetFormulario;
+          resetFormulario();
         }
       }
     })
@@ -210,6 +210,7 @@ function resetFormulario() {
   document.getElementById("fone").value = "";
   document.getElementById("dataNasc").value = "";
   document.getElementById("formSexo").value = "";
+  document.getElementById("email").classList.remove("is-valid");
   document.getElementById("email").value = "";
   document.getElementById("senha").value = "";
   document.getElementById("confSenha").value = "";

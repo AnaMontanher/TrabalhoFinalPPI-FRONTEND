@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //mascara nome
   nome.addEventListener("input", function (e) {
     let valor = e.target.value;
-    let nomePattern = valor.replace(/\d/g, "");
+    let nomePattern = valor.replace(/\d/g, "").replace();
     e.target.value = nomePattern;
   });
 
@@ -54,23 +54,27 @@ document.addEventListener("DOMContentLoaded", function () {
       input.classList.toggle("is-invalid", !isValid);
     }
     //validação de e-mail
-    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
-    aplicaClasse(email, emailValido);
-    if (!emailValido) isValid = false;
+    const validarEmail = function () {
+      const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
+      aplicaClasse(email, emailValido);
+      if (!emailValido) isValid = false;
 
-    //função alterar classes para campos de confirmar informaçao
-    const classeIncorreto = function (input) {
-      input.classList.remove("correto");
-      input.classList.remove("is-valid");
-      input.classList.add("is-invalid");
-      input.classList.add("incorreto");
+      //função alterar classes para campos de confirmar informaçao
+      const classeIncorreto = function (input) {
+        input.classList.remove("is-valid");
+        input.classList.remove("form-control:valid");
+        input.classList.add("is-invalid");
+      };
+      const classeCorreto = function (input) {
+        input.classList.remove("is-invalid");
+        input.classList.remove("feedback-invalid");
+        input.classList.add("is-valid");
+      };
     };
-    const classeCorreto = function (input) {
-      input.classList.remove("is-invalid");
-      input.classList.remove("incorreto");
-      input.classList.add("correto");
-      input.classList.add("is-valid");
-    };
+
+    email.addEventListener("input", function () {
+      validarEmail();
+    });
 
     confSenha.addEventListener("input", function () {
       if (senha.value !== confSenha.value || confSenha === "") {
