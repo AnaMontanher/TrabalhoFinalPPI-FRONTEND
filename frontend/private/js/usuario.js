@@ -57,7 +57,7 @@ function gravarUsuario(evento) {
       })
       .then((dados) => {
         if (dados.status) {
-          resetFormulario();
+          resetFormulario;
           exibirTabelaClientes();
           mensagemAlerta("Cliente gravado com sucesso!", "success");
         } else {
@@ -89,7 +89,7 @@ function excluirCliente(cpf) {
           mensagemAlerta("Cliente excluído com sucesso!", "success");
         } else {
           mensagemAlerta(
-            "Cliente não foi atualizado erro" + dados.mensagem,
+            "Cliente não foi exclúido erro" + dados.mensagem,
             "danger"
           );
         }
@@ -114,7 +114,7 @@ function atualizarCliente(cpf) {
     })
     .then((dados) => {
       if (dados.status) {
-        resetFormulario();
+        resetFormulario;
         exibirTabelaClientes();
         mensagemAlerta("Cliente atualizado com sucesso!", "success");
       } else {
@@ -177,9 +177,7 @@ cpfInput.addEventListener("input", function (e) {
           const cliente = dados.cliente;
           // Preenchendo o formulário com os dados da tabela
           recuperaDadosCliente(cliente);
-          document
-            .getElementById("btnCadastrar")
-            .setAttribute("disabled", "disabled");
+          botoesEstado(false);
           mensagemAlerta("Cliente já está cadastrado no sistema", "primary");
         }
       });
@@ -270,6 +268,7 @@ function exibirTabelaClientes() {
         const tabela = document.createElement("table");
         tabela.className = "table table-stripped tabela table-hover";
         const cabecalho = document.createElement("thead");
+        cabecalho.className = "text-center table-dark";
         cabecalho.innerHTML = `
           <tr>
           <th>CPF</th>
@@ -287,14 +286,14 @@ function exibirTabelaClientes() {
 
         for (const cliente of dados.clientes) {
           const linhaDados = document.createElement("tr");
-          linhaDados.innerHTML = `<td>${cliente.cpf}</td>
-          <td>${cliente.nome}</td>
-          <td>${cliente.telefone}</td>
-          <td>${formatarData(cliente.dataNasc)}</td>
-          <td>${cliente.sexo}</td>
-          <td>${cliente.email}</td>
+          linhaDados.innerHTML = `<td class="text-center">${cliente.cpf}</td>
+          <td class="text-start" >${cliente.nome}</td>
+          <td class="text-center">${cliente.telefone}</td>
+          <td class="text-center">${formatarData(cliente.dataNasc)}</td>
+          <td class="text-center">${cliente.sexo}</td>
+          <td class="text-start">${cliente.email}</td>
           <td class = "d-none">${cliente.senha}</td>
-          <td><div class="d-flex gap-2">
+          <td><div class="d-flex gap-2 justify-content-center">
           <button type="button" class="btn btn-danger" onclick="excluirCliente('${
             cliente.cpf
           }')" >

@@ -13,6 +13,4 @@ document.addEventListener("DOMContentLoaded", function () {
       .replace(/(-\d{2})(\d+?$)/, "$1");
     e.target.value = cpfPattern;
   });
-
-
 });

@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let isValid = true;
     function aplicaClasse(input, isValid) {
       input.classList.toggle("is-valid", isValid);
-      input.classList.toggle("is-invalid", isValid);
+      input.classList.toggle("is-invalid", !isValid);
     }
     //validação de e-mail
     const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
@@ -60,24 +60,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //função alterar classes para campos de confirmar informaçao
     const classeIncorreto = function (input) {
-      input.classList.remove("correto:focus");
       input.classList.remove("correto");
       input.classList.remove("is-valid");
       input.classList.add("is-invalid");
-      input.classList.add("incorreto:focus");
       input.classList.add("incorreto");
     };
     const classeCorreto = function (input) {
       input.classList.remove("is-invalid");
-      input.classList.remove("incorreto:focus");
       input.classList.remove("incorreto");
-      input.classList.add("correto:focus");
       input.classList.add("correto");
       input.classList.add("is-valid");
     };
 
     confSenha.addEventListener("input", function () {
-      if (senha.value != confSenha.value || confSenha == "") {
+      if (senha.value !== confSenha.value || confSenha === "") {
         classeIncorreto(confSenha);
       } else {
         classeCorreto(confSenha);

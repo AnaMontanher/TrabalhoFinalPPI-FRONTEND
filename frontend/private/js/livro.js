@@ -22,6 +22,7 @@ function botoesEstado(padrao) {
     document
       .getElementById("btnCadastrar")
       .setAttribute("disabled", "disabled");
+    document.getElementById("btnBuscar").setAttribute("disabled", "disabled");
   }
 }
 formulario.onsubmit = gravarPedido;
@@ -40,7 +41,6 @@ cpfInput.addEventListener("input", function (e) {
           document.getElementById("nomeUsuario").value = cliente.nome;
         } else {
           botoesEstado(false);
-
           mensagemAlerta(
             "Cliente não possui cadastro no sistema" + erro.message,
             "danger"
@@ -67,9 +67,9 @@ function gravarPedido(evento) {
   const cpf = document.getElementById("cpf").value;
   const valores = formularioInputs();
 
-  if (validarFormulario()) {
-    verificarCliente(cpf);
-
+  evento.stopPropagation();
+  evento.preventDefault();
+  if (validarFormulario) {
     fetch("http://localhost:4000/livro", {
       method: "POST",
       headers: {
@@ -96,9 +96,6 @@ function gravarPedido(evento) {
         alert("Não foi possível gravar o pedido" + erro.message);
       });
   }
-
-  evento.stopPropagation();
-  evento.preventDefault();
 }
 
 function excluirPedido(id) {
@@ -145,14 +142,11 @@ function atualizarPedido(id) {
         exibirTabelaPedidos();
         mensagemAlerta("Livro atualizado com sucesso!", "success");
       } else {
-        mensagemAlerta(
-          "Livro não foi atualizado erro" + dados.mensagem,
-          "danger"
-        );
+        mensagemAlerta("Livro não foi atualizado" + dados.mensagem, "danger");
       }
     })
     .catch((erro) => {
-      alert("Não foi possível atualizar o pedido." + erro.message);
+      mensagemAlerta("Livro não foi atualizado erro", "danger");
     });
 }
 function mensagemAlerta(mensagem, tipo) {
@@ -248,6 +242,7 @@ function exibirTabelaPedidos() {
         const tabela = document.createElement("table");
         tabela.className = "table table-stripped tabela table-hover";
         const cabecalho = document.createElement("thead");
+        cabecalho.className = "text-center table-dark";
         cabecalho.innerHTML = `
           <tr>
           <th>COD</th>
@@ -263,12 +258,12 @@ function exibirTabelaPedidos() {
 
         for (const livro of dados.livros) {
           const linhaDados = document.createElement("tr");
-          linhaDados.innerHTML = `<td>${livro.id}</td>
-          <td>${livro.titulo}</td>
-          <td>${livro.autor}</td>
-          <td>${livro.cliente.cpf}</td>
-          <td>${livro.cliente.nome}</td>
-          <td><div class="d-flex gap-2">
+          linhaDados.innerHTML = `<td class="text-center">${livro.id}</td>
+          <td class="text-start">${livro.titulo}</td>
+          <td class="text-start">${livro.autor}</td>
+          <td class="text-center">${livro.cliente.cpf}</td>
+          <td class="text-start">${livro.cliente.nome}</td>
+          <td><div class="justify-content-center d-flex gap-2">
           <button type="button" class="btn btn-danger" onclick="excluirPedido('${livro.id}')" >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
           </svg></button>
